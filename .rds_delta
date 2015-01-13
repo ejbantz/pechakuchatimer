@@ -1,8 +1,6 @@
 #delete
-res/wgt/js/kinetic-v5.0.2.min.js
 #add
 #modify
 res/wgt/author-signature.xml
 res/wgt/index.html
-res/wgt/js/main.js
 res/wgt/signature1.xml
