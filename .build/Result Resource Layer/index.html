@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Pecha Kucha Timer"/>
+
+    <title>Pecha Kucha Timer</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/easeljs-0.8.0.min.js"></script>
+    <script src="js/tweenjs-0.6.0.min.js"></script>
+  
+</head>
+
+<body onload="init();">
+    <canvas id="canvas" width="320" height="320"></canvas>
+   <script>
+		function init() {
+		  var stage = new createjs.Stage("canvas");
+		  createjs.Touch.enable(stage);
+			var circle = new createjs.Shape();
+			circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
+			circle.x = 320/2;
+			circle.y = 320/2;
+			stage.addChild(circle);
+			
+			
+			
+			
+			 var text = new createjs.Text("Pecha Kucha", "40px Arial", "#ff7700");
+			 text.x = 50;
+			 text.y = 50;
+			 text.textBaseline = "alphabetic";			
+			
+		
+			
+			
+			stage.addChild(text);
+		    var tween = createjs.Tween.get(circle, { loop: true, paused: true });
+		    
+		    tween.to({ alpha: 0 }, 0).to({alpha:1}, 500).to({alpha:0}, 500);
+
+	        createjs.Ticker.setFPS(30);
+	        createjs.Ticker.addEventListener("tick", stage);
+	        
+			var timer = null;
+			
+			circle.addEventListener("click", function(e) {
+				stage.update();
+			});
+				  
+            function toggleTimer(){
+            	if (timer == null) {
+            		timer = setInterval(function() {myTimer()}, 20000);
+            		tween.setPaused(false);	 
+            	} else {
+            	    window.clearInterval(timer);
+            	    tween.setPaused(true);
+            	    timer = null;
+            	}
+            	return timer;
+            }				  
+			function myTimer() {
+			 	window.navigator.vibrate(1000);
+			}
+			
+		    // add eventListener for tizenhwkey
+		    document.addEventListener('tizenhwkey', function(e) {
+		        if(e.keyName == "back")
+		            tizen.application.getCurrentApplication().exit();
+		    });
+		    				  
+		}
+	</script>
+    
+  </body>
+</html>
