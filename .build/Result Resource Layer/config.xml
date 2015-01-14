@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://ejbantz.com/pechakuchatimer" version="1.0.0" viewmodes="maximized">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://ejbantz.com/pechakuchatimer" version="1.0.1" viewmodes="maximized">
     <tizen:application id="VH6K5vMwqo.pechakuchatimer" package="VH6K5vMwqo" required_version="2.2"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png" height="170" width="170"/>
     <name>Pecha Kucha Timer</name>
+    <tizen:privilege name="http://tizen.org/privilege/power"/>
     <tizen:setting background-support="enable" encryption="disable" hwkey-event="enable"/>
 </widget>

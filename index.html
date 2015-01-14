@@ -41,7 +41,7 @@
 		    
 		    tween.to({ alpha: 0 }, 0).to({alpha:1}, 500).to({alpha:0}, 500);
 
-	        createjs.Ticker.setFPS(30);
+	        createjs.Ticker.setFPS(15);
 	        createjs.Ticker.addEventListener("tick", stage);
 	        
 			var timer = null;
@@ -55,10 +55,12 @@
             	if (timer == null) {
             		timer = setInterval(function() {myTimer()}, 20000);
             		tween.setPaused(false);	 
+            	 	tizen.power.request("CPU", "CPU_AWAKE");
             	} else {
             	    window.clearInterval(timer);
             	    tween.setPaused(true);
             	    timer = null;
+            	    tizen.power.release("CPU");
             	}
             	return timer;
             }				  
@@ -69,6 +71,7 @@
 		    // add eventListener for tizenhwkey
 		    document.addEventListener('tizenhwkey', function(e) {
 		        if(e.keyName == "back")
+            	    tizen.power.release("CPU");
 		            tizen.application.getCurrentApplication().exit();
 		    });
 		    				  
